@@ -1,0 +1,18 @@
+.input-field {
+  height: 40px;
+}
+
+i.fa {
+  height: 15px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+#questions li {
+  margin-bottom: 20px;
+}
+
+#questions li {
+  list-style: none;
+}
+
