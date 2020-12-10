@@ -33,11 +33,12 @@
     <link rel="stylesheet" href=  "assets/css/Sidebar-Menu-1.css">
     <link rel="stylesheet" href=  "assets/css/Sidebar-Menu.css">
     <link rel="stylesheet" href=  "assets/css/styles.css">
-    <script src="/script/aws-cognito-sdk.min.js"></script>
-	<script src="/script/amazon-cognito-identity.min.js"></script>
+   
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.797.0.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <!--
+     <script src="/script/aws-cognito-sdk.min.js"></script>
+	<script src="/script/amazon-cognito-identity.min.js"></script>
     <script type="text/javascript">
         var URL="https://yx1wm602z6.execute-api.ap-south-1.amazonaws.com/test/posts";
         $(document).ready(function(){
@@ -125,6 +126,20 @@
 
     <div class="row"  style="position: absolute;width: 100%;left: 265px;top: 115px;">
         <div class="col"  style="padding: 25px 20px;">
+            <div>
+                <div class="form-row" style="margin-right:200px;margin-left:-105px;padding-top:24px;">
+            
+            
+                    <div class="col-md-10 offset-md-1 input-icons">							
+                        <textarea cols="11" rows="4" class="form-control input-field" style="margin-left:0px;font-family:Roboto, sans-serif;" id="desc" name="experience" placeholder="Say something!"></textarea>
+                        <br/>
+        
+                    <button class="btn btn-info btn-lg" style="margin-left:0px;" id="registerbutton" type="button" onclick="register()">POSTNOW</button></div>
+                            
+                    </div>
+                </div>
+          
+            </div>
             <div  class="card border-black border rounded shadow-lg"  id='card-body-container'
                 style="position: relative;width: 1200px;margin: 10px;top:20px;margin-left: 45px;background-color: #f2f3f4 ;">
 
@@ -179,7 +194,7 @@
             <a class="nav-link" href="newsfeed.html">NewsFeed
               <span class="sr-only">current</span>
             </a>
-            
+
           </li>
           <li class="nav-item">
             <a class="nav-link" href="index.html">Log Out</a>
