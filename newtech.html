@@ -38,7 +38,57 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
      <script src="/script/aws-cognito-sdk.min.js"></script>
-	<script src="/script/amazon-cognito-identity.min.js"></script>
+    <script src="/script/amazon-cognito-identity.min.js"></script>
+    
+    <script>
+		function submitToAPI(e) {
+       e.preventDefault();
+       var URL = "https://hp4qx9j4b4.execute-api.ap-south-1.amazonaws.com/test/tech";      
+                   
+       var company = $("#company").val();
+      var title= $("#title").val();
+	  
+       //var name = $("#username").val();
+	   var name='Akanksha';
+       var domain = $("#domain").val();
+       var tech=$("#tech").val();
+       var inspiration=$('#inspiration').val();
+       var link=$('#link').val();
+       var desc=$('#desc').val();
+       var dataa = {
+		username : name,
+          domain:domain,
+          tech:tech,
+          inspiration:inspiration,
+          link:link,
+          desc : desc
+        };
+
+       $.ajax({
+         type: "POST",
+         url : "https://hp4qx9j4b4.execute-api.ap-south-1.amazonaws.com/test/tech",
+		
+         dataType: "json",
+		 contentType: 'application/json; charset=utf-8',
+         crossDomain: true,
+         
+         data: JSON.stringify(dataa),
+        
+         success: function (data) {
+           // clear form and show a success message
+           alert("Successfull. Thank you for submitting your project!");
+           //document.getElementById("review-form").reset();
+		   window.location.href="techie.html";
+		   //location.reload();
+         },
+         error: function (e) {
+           // show an error message
+           alert("UnSuccessfull!!"+JSON.stringify(e));
+         }});
+     }
+	</script> 
+
+
     
 <style>
     body {
@@ -103,7 +153,7 @@
         
                                         
         
-                                        <input type="text" class="form-control input-field" id="referencenum" style="margin-left:0px;font-family:Roboto, sans-serif;" name="referencenum" placeholder="Reference number" /> 								
+                                        <input type="text" class="form-control input-field" id="tech" style="margin-left:0px;font-family:Roboto, sans-serif;" name="tech" placeholder="Project Tech Stack" /> 								
         
                                     </div>
                                 </div>
@@ -116,7 +166,7 @@
         
                                         
         
-                                        <input type="text" class="form-control input-field" style="margin-left:0px;font-family:Roboto, sans-serif;" id="date" name="date" placeholder="Date of publication" /> 								
+                                        <input type="text" class="form-control input-field" style="margin-left:0px;font-family:Roboto, sans-serif;" id="inspiration" name="inspiration" placeholder="Project Inspiration" /> 								
         
                                     </div>
                                 </div>
@@ -129,7 +179,7 @@
         
                                         
         
-                                        <input type="text" class="form-control input-field" style="margin-left:0px;font-family:Roboto, sans-serif;" id="platform" name="platform" placeholder="Publisher" /> 								
+                                        <input type="text" class="form-control input-field" style="margin-left:0px;font-family:Roboto, sans-serif;" id="link" name="link" placeholder="Link to your project" /> 								
         
                                     </div>
                                 </div>
@@ -141,7 +191,7 @@
         
         
                                     <div class="col-md-10 offset-md-1 input-icons">							
-                                        <textarea cols="40" rows="15" class="form-control input-field" style="margin-left:0px;font-family:Roboto, sans-serif;" id="abstract" name="abstract" placeholder="Abstract of paper"></textarea>
+                                        <textarea cols="40" rows="15" class="form-control input-field" style="margin-left:0px;font-family:Roboto, sans-serif;" id="desc" name="desc" placeholder="Description of your project"></textarea>
                                     </div>
                                 </div>
         
@@ -176,7 +226,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="newresearch.html">Add Research
+                <a class="nav-link" href="newtech.html">Add Project
                       <span class="sr-only"></span>
                     </a>
               </li>
