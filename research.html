@@ -40,7 +40,7 @@
      <script src="/script/aws-cognito-sdk.min.js"></script>
 	<script src="/script/amazon-cognito-identity.min.js"></script>
     <script type="text/javascript">
-        var URL="https://9wyxh0ns45.execute-api.ap-south-1.amazonaws.com/post/pots";
+        var URL="https://pp1x9fb1bf.execute-api.ap-south-1.amazonaws.com/test/research";
         $(document).ready(function(){
             $.ajax({
         url: URL,
@@ -69,9 +69,25 @@
                     <hr style="border-top: 2.5px solid gray;width:98%">\
                     <div class="container">\
                         <div class="container col-lg">\
+                            <table align="left" cellpadding="10px" cellspacing="10px" width="100%">\
+                                <tr>\
+                                    <td id="title"><b>Job Title : </b>'+ data[i].domain +'</td>\
+                                </tr>\
+                                <tr>\
+                                    <td id="company"><b>Company : </b>'+ data[i].referencenum +'</td>\
+                                    \
+                                </tr>\
+\
+                                <tr>\
+                                    <td id="difficulty"><b>Date of publication : </b>'+ data[i].date +'</td>\
+                                </tr>\
+                                <tr>\
+                                    <td id="difficulty"><b>Published In : </b>'+ data[i].platform +'</td>\
+                                </tr>\
+                            </table>\
                         </div>\
                         <div class="container" style="margin-top: 20px">\
-                              <h6 id="experience"><b>Post : </b>'+ data[i].post +'</h6>\
+                              <h6 id="experience"><b>Abstract : </b>'+ data[i].abstract +'</h6>\
                         </div>\
                     </div>\
                     <div class="container col-md" style="margin-left:60px">\
@@ -97,55 +113,7 @@
 
     </script>
 
-<script>
 
-
-    function submitToAPI(e) {
-   e.preventDefault();
-   var URL = "https://9wyxh0ns45.execute-api.ap-south-1.amazonaws.com/post/pots";
-
-       
-               
-
-   var company = $("#company").val();
-  var title= $("#title").val();
-  
-   //var name = $("#username").val();
-   var name='Akanksha';
-   var post = $("#post").val();
-  
-   var dataa = {
-    username : name,
-      post : post
-    };
-
-
-    
-
-   $.ajax({
-     type: "POST",
-     url : "https://9wyxh0ns45.execute-api.ap-south-1.amazonaws.com/post/pots",
-    
-     dataType: "json",
-     contentType: 'application/json; charset=utf-8',
-     crossDomain: true,
-     
-     data: JSON.stringify(dataa),
-
-     
-     success: function (data) {
-       // clear form and show a success message
-       alert("Successfull. Thank you for submitting the post");
-       //document.getElementById("review-form").reset();
-       window.location.href="newsfeed.html";
-       //location.reload();
-     },
-     error: function (e) {
-       // show an error message
-       alert("UnSuccessfull"+JSON.stringify(e));
-     }});
- }
-</script> 
 
 
 <style type="text/css">
@@ -158,60 +126,14 @@
 </head>
 <body>
 
-
-
-<div>
-
-    <div class="row"  style="position: absolute;width: 100%;left: 265px;top: 115px;">
-        <div class="col"  style="padding: 25px 20px;">
-            <div>
-                <div class="form-row" style="margin-right:200px;margin-left:-105px;padding-top:24px;">
-            
-            
-                    <div class="col-md-10 offset-md-1 input-icons">							
-                        <textarea cols="11" rows="4" class="form-control input-field" style="margin-left:0px;font-family:Roboto, sans-serif;" id="post" name="experience" placeholder="Say something!"></textarea>
-                        <br/>
-        
-                    <button class="btn btn-info btn-lg" style="margin-left:0px;" id="postit" type="button" onClick="submitToAPI(event)">POSTNOW</button></div>
-                            
-                    </div>
-                </div>
           
-            </div>
+          
             <div  class="card border-black border rounded shadow-lg"  id='card-body-container'
             style="position: absolute;width: 75%;left: 50px;top: 255px;">
 
                 
             </div>
-        </div>
         
-    </div>
-
-
-    <div class="row">
-        <div class="col" style="position: relative;top: 115px;">
-            <div id="wrapper" style="color: white;opacity: 0.92;position: fixed;left: 0;">
-                <div id="sidebar-wrapper">
-                    <ul class="sidebar-nav">
-                        <li class="sidebar-brand"></li>
-                        <li class="sidebar-brand"> <a href="research.html">Research</a></li>
-                        <li class="sidebar-brand"> <a href="techie.html">Techie</a></li>
-                       
-                        
-                        
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-
-
-
 
 <!-- Top Navigation bar-->
 
@@ -224,11 +146,17 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Home
+            <a class="nav-link" href="newresearch.html">Add Research
                   <span class="sr-only"></span>
                 </a>
           </li>
-          <li class="nav-item active" >
+          <li class="nav-item" >
+            <a class="nav-link" href="techie.html">Techie
+              <span class="sr-only">current</span>
+            </a>
+
+          </li>
+          <li class="nav-item" >
             <a class="nav-link" href="newsfeed.html">NewsFeed
               <span class="sr-only">current</span>
             </a>
