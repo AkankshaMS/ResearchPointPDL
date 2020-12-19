@@ -41,6 +41,7 @@
 	<script src="/script/amazon-cognito-identity.min.js"></script>
     <script type="text/javascript">
         var URL="https://hp4qx9j4b4.execute-api.ap-south-1.amazonaws.com/test/tech";
+        var domain=$('#domain').val();
         $(document).ready(function(){
             $.ajax({
         url: URL,
@@ -54,6 +55,7 @@
              //console.log(len);
              
              for(i=0;i<len;i++){
+                
 
                 $('#card-body-container').append('\
                 <div class="col"  style="padding: 25px 20px;">\
@@ -104,8 +106,8 @@
                  //$('#difficulty').append(data[i].difficult);
                  //$('#experience').append(data[i].desc);
 
-             }
-             
+            
+            }
                     }
                 });
             });
@@ -132,14 +134,11 @@
 </style>
 </head>
 <body>
+    <div  class="card border-black border rounded shadow-lg"  id='card-body-container'
+    style="position: absolute;width: 75%;left: 220px;top: 220px;background-color: #08233d ;">
 
-          
-          
-            <div  class="card border-black border rounded shadow-lg"  id='card-body-container'
-            style="position: absolute;width: 75%;left: 220px;top: 220px;background-color: #08233d ;">
-
-                
-            </div>
+        
+    </div>
         
 
 <!-- Top Navigation bar-->
