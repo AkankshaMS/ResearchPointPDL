@@ -37,7 +37,84 @@
         <script src="https://sdk.amazonaws.com/js/aws-sdk-2.797.0.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
+        <script type="text/javascript">
+            var URL="https://ai76xtk865.execute-api.ap-south-1.amazonaws.com/test/profile";
+            $(document).ready(function(){
+                $.ajax({
+            url: URL,
+            type: 'GET',
+             contentType: 'application/json; charset=utf-8',
+             
+             success: function(data){
+                 console.log(data);
+                 var len=data.length;
+                 var i;
+                 //console.log(len);
+                 if (len == 0) { 
+                     //console.log("Array is empty!"); 
+                     $('#card-body-container').append('\
+                    <div class="px-4 pt-0 pb-4 cover">\
+                        <div class="media align-items-end profile-head">\
+                            <div class="profile mr-3"><img src="assets/images/usericon.png" alt="..." width="130" class="rounded mb-2 img-thumbnail"><a href="editprofile.html" class="btn btn-outline-dark btn-sm btn-block">Edit profile</a></div>\
+                            <div class="media-body mb-5 text-white">\
+                                <h4 id="name" class="mt-0 mb-0">Tell me what we can call you </h4>\
+                                <p id="city" class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>Where do you live?</p>\
+                            </div>\
+                        </div>\
+                    </div>\
+                    <br/>\
+                    <br/>\
+                    <div class="px-4 py-3">\
+                        <h5 class="mb-0">About</h5>\
+                        <div class="p-4 rounded shadow-sm bg-light">\
+                            <p id="eccupation" style="color:black;" class="font-italic mb-0">Occupation : Tell us what you do!</p>\
+                            <p id="city" style="color:black;" class="font-italic mb-0">City : Where do you live?</p>\
+                            <p id="hobby" style="color:black;" class="font-italic mb-0">Hobby :Hobby?</p>\
+                        </div>\
+                    </div>');
 
+                    }
+                    else{
+                 for(i=0;i<len;i++){
+                    
+    
+                    $('#card-body-container').append('\
+                    <div class="px-4 pt-0 pb-4 cover">\
+                        <div class="media align-items-end profile-head">\
+                            <div class="profile mr-3"><img src="assets/images/usericon.png" alt="..." width="130" class="rounded mb-2 img-thumbnail"><a href="editprofile.html" class="btn btn-outline-dark btn-sm btn-block">Edit profile</a></div>\
+                            <div class="media-body mb-5 text-white">\
+                                <h4 id="name" class="mt-0 mb-0">'+data[i].username +' </h4>\
+                                <p id="city" class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>'+data[i].city +' </p>\
+                            </div>\
+                        </div>\
+                    </div>\
+                    <br/>\
+                    <br/>\
+                    <div class="px-4 py-3">\
+                        <h5 class="mb-0">About</h5>\
+                        <div class="p-4 rounded shadow-sm bg-light">\
+                            <p id="eccupation" style="color:black;" class="font-italic mb-0">Occupation : '+data[i].occupation +'</p>\
+                            <p id="city" style="color:black;" class="font-italic mb-0">City : Lives in '+data[i].city +'</p>\
+                            <p id="hobby" style="color:black;" class="font-italic mb-0">Hobby :'+data[i].hobby +'</p>\
+                        </div>\
+                    </div>');
+    
+                     //$('#card').clone().appendTo('#card');
+                     //console.log(data[i].company);
+                    // $('#user').append(data[i].username);
+                     //$('#title').append(data[i].job_title);
+                     //$('#company').append(data[i].company);
+                     //$('#difficulty').append(data[i].difficult);
+                     //$('#experience').append(data[i].desc);
+    
+                 }}
+                 
+                        }
+                    });
+                });
+    
+    
+        </script>
 
     <style>
         .profile-head {
@@ -56,6 +133,7 @@ body {
     min-height: 100vh
 }
     </style>
+    
     </head>
     <body>
 
@@ -94,26 +172,8 @@ body {
         <div class="row py-5 px-4">
             <div class="col-md-5 mx-auto">
                 <!-- Profile widget -->
-                <div class="bg-white shadow rounded overflow-hidden">
-                    <div class="px-4 pt-0 pb-4 cover">
-                        <div class="media align-items-end profile-head">
-                            <div class="profile mr-3"><img src="assets/images/usericon.png" alt="..." width="130" class="rounded mb-2 img-thumbnail"><a href="editprofile.html" class="btn btn-outline-dark btn-sm btn-block">Edit profile</a></div>
-                            <div class="media-body mb-5 text-white">
-                                <h4 id="name" class="mt-0 mb-0">Akanksha</h4>
-                                <p id="city" class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>City</p>
-                            </div>
-                        </div>
-                    </div>
-                    <br/>
-                    <br/>
-                    <div class="px-4 py-3">
-                        <h5 class="mb-0">About</h5>
-                        <div class="p-4 rounded shadow-sm bg-light">
-                            <p id="eccupation" style="color:black;" class="font-italic mb-0">Occupation : Web Developer</p>
-                            <p id="city" style="color:black;" class="font-italic mb-0">City : Lives in New York</p>
-                            <p id="hobby" style="color:black;" class="font-italic mb-0">Hobby : Photographer</p>
-                        </div>
-                    </div>
+                <div class="bg-white shadow rounded overflow-hidden" id="card-body-container">
+                    
                     
                 </div>
             </div>
