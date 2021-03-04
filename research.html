@@ -40,8 +40,14 @@
      <script src="/script/aws-cognito-sdk.min.js"></script>
 	<script src="/script/amazon-cognito-identity.min.js"></script>
     <script type="text/javascript">
+    
         var URL="https://pp1x9fb1bf.execute-api.ap-south-1.amazonaws.com/test/research";
+       
         $(document).ready(function(){
+          $("#domain").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    
+  });
             $.ajax({
         url: URL,
         type: 'GET',
@@ -51,8 +57,8 @@
              console.log(data);
              var len=data.length;
              var i;
-             //console.log(len);
-             
+             //console.log(le);
+            
              for(i=0;i<len;i++){
 
                 $('#card-body-container').append('\
@@ -137,8 +143,24 @@
           
             <div  class="card border-black border rounded shadow-lg"  id='card-body-container'
             style="position: absolute;width: 75%;left: 220px;top: 220px;background-color: #08233d ;">
-
-                
+         
+          <div class="form-row" style="margin-right:20px;margin-left:-20px;padding-top:24px;">              
+            <div class="col-md-10 offset-md-1 input-icons">               
+                <select class="form-control input-field" style="margin-left:0px;font-family:Roboto, sans-serif; height: 40px;" id="domain" name="Domain" placeholder="Domain">
+                    <option default> Domain </option>
+                    <option value="Cloud"> Cloud technology</option>
+                    <option value="Bigdata"> Big Data</option>
+                    <option value="IOT"> IOT</option>
+                    <option value="Robotics"> Robotics</option>
+                    <option value="AI/ML"> AI/ML</option>
+                    <option value="Gaming"> Gaming</option>
+                    <option value="Data Science"> Data Science</option>
+                    <option value="Graphics"> Graphics</option>
+                    <option value="Other"> Other</option>
+                </select>
+            </div>
+        </div>   
+               
             </div>
         
 
