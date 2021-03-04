@@ -41,7 +41,7 @@
 	<script src="/script/amazon-cognito-identity.min.js"></script>
     <script type="text/javascript">
         var URL="https://hp4qx9j4b4.execute-api.ap-south-1.amazonaws.com/test/tech";
-        var domain=$('#domain').val();
+        //var domain=$('#domain').val();
         $(document).ready(function(){
             $.ajax({
         url: URL,
@@ -112,6 +112,83 @@
                 });
             });
 
+            function getdom(){  
+          $('.col').remove();   
+var number=document.getElementById("number").value;  
+number=number.toLowerCase();
+            
+$(document).ready(function(){
+          console.log(number);
+            $.ajax({
+        url: URL,
+        type: 'GET',
+         contentType: 'application/json; charset=utf-8',
+         
+         success: function(data){
+             console.log(data);
+             var len=data.length;
+             var i;
+            
+             for(i=0;i<len;i++){
+               var dom=data[i].domain.toLowerCase();
+              if (dom == number){
+                $('#card-body-container').append('\
+                <div class="col"  style="padding: 25px 20px;">\
+                  <div class="card border-black border rounded shadow-lg"\
+                style="position: relative;width: 1000px;margin: 10px;top:20px;margin-left: 45px;background-color: #f2f3f4 ;">\
+                <div id="card" class="card-body" style="width: 100%;padding: 0px;">\
+                    <div class="container card-top">\
+                        <div class="row">\
+                           <div class="col-6" id="user">\
+                                <span class="card-top-text"> '+data[i].username +' </span>\
+                            </div>\                           </div>\
+                    </div>\
+                    <hr style="border-top: 2.5px solid gray;width:98%">\
+                    <div class="container">\
+                        <div class="container col-lg">\
+                            <table align="left" cellpadding="10px" cellspacing="10px" width="100%">\
+                                <tr>\
+                                    <td id="title"><b>Project Domain : </b>'+ data[i].domain +'</td>\
+                                </tr>\
+                                <tr>\
+                                    <td id="company"><b>Tech Stack : </b>'+ data[i].tech +'</td>\
+                                    \
+                                </tr>\
+\
+                                <tr>\
+                                    <td id="difficulty"><b>Inspiration : </b>'+ data[i].inspiration +'</td>\
+                                </tr>\
+                                <tr>\
+                                    <td id="difficulty"><b>Link to project : </b>'+ data[i].link+'</td>\
+                                </tr>\
+                            </table>\
+                        </div>\
+                        <div class="container" style="margin-top: 20px">\
+                              <h6 id="experience"><b>Description : </b>'+ data[i].desc +'</h6>\
+                        </div>\
+                    </div>\
+                    <div class="container col-md" style="margin-left:60px">\
+                    </div>\
+                    </div>\
+            </div>\
+        </div>' );
+
+                 //$('#card').clone().appendTo('#card');
+                 //console.log(data[i].company);
+                // $('#user').append(data[i].username);
+                 //$('#title').append(data[i].job_title);
+                 //$('#company').append(data[i].company);
+                 //$('#difficulty').append(data[i].difficult);
+                 //$('#experience').append(data[i].desc);
+      }
+            
+            }
+                    }
+                });
+            });
+
+}
+
 
     </script>
 
@@ -122,6 +199,15 @@
       background-attachment: fixed;
       background-size: 100% 100%;
     }
+    input[type=text], select {
+  width: 50%;
+  padding: 8px 15px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  box-sizing: border-box;
+}
     </style>
 
 
@@ -137,7 +223,10 @@
     <div  class="card border-black border rounded shadow-lg"  id='card-body-container'
     style="position: absolute;width: 75%;left: 220px;top: 220px;background-color: #08233d ;">
 
-        
+    <form>  
+      <input type="text" id="number" name="number"style="margin-right:20px;margin-left:10px;padding-top:24px;" placeholder="Enter Domain"/><br/>  
+      <input type="button" class="btn btn-primary" value="Filter" style="margin-right:10px;margin-left:10px;padding-top:24px;" onclick="getdom()"/>  
+      </form>    
     </div>
         
 
